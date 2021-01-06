@@ -14,7 +14,7 @@ export default class App extends Component {
     temp: "",
     pressure: "",
     wind: "",
-    err: "",
+    err: false,
   };
   handleInputChange = (e) => {
     this.setState({
@@ -35,8 +35,26 @@ export default class App extends Component {
         throw Error("Nie udało się");
       })
       .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+      .then((data) => {
+        const date = new Date().toLocaleString();
+        this.setState((prevState) => ({
+          err: false,
+          date: date,
+          city: prevState.value,
+          sunrise: data.sys.sunrise,
+          sunset: data.sys.sunset,
+          temp: data.main.temp,
+          pressure: data.main.pressure,
+          wind: data.wind.speed,
+        }));
+      })
+      .catch((err) => {
+        console.log(err);
+        this.setState({
+          err: true,
+          city: this.state.value,
+        });
+      });
   };
   render() {
     return (
@@ -46,7 +64,7 @@ export default class App extends Component {
           change={this.handleInputChange}
           submit={this.handleCitySubmit}
         />
-        <Result />
+        <Result weather={this.state} />
       </div>
     );
   }
