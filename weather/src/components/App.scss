@@ -1,0 +1,56 @@
+header {
+  text-align: center;
+  background-color: orange;
+}
+
+.App {
+  width: 100vw;
+  text-align: center;
+  background-color: orange;
+}
+
+.weather_icons {
+  background-color: orange;
+  width: 60vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .weather_icons--sun,
+  .weather_icons--rain,
+  .weather_icons--snow,
+  .weather_icons--sunetrain {
+    font-size: 50px;
+    color: yellow;
+  }
+
+  .weather_icons--rain {
+    color: #afc3cc;
+  }
+
+  .weather_icons--sunetrain {
+    color: cyan;
+  }
+
+  .weather_icons--snow {
+    color: white;
+  }
+}
+
+.result {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+  .results__icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: 50px;
+    font-size: 30px;
+  }
+}
