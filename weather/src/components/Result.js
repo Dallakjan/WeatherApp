@@ -9,6 +9,7 @@ import {
   faCloudSun,
   faWind,
   faTachometerAlt,
+  faFrownOpen,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Result(props) {
@@ -34,30 +35,63 @@ export default function Result(props) {
           <h3>
             Wyniki wyszukiwania dla <em>{city}</em>
           </h3>
+          <hr />
           <h4>Dane dla dnia i godziny: {date}</h4>
+          <hr />
           <h4>Aktualna temperatura: {temp} &#176;C</h4>
+          <hr />
           <h4>Wschód słońca o {sunriseTime} </h4>
+          <hr />
           <h4>Zachód słońca o {sunsetTime}</h4>
+          <hr />
           <h4>Siła wiatru {wind} m/s</h4>
+          <hr />
           <h4>Ciśnienie {pressure} hPa</h4>
+          <hr />
         </div>
         <div className="results__icons">
-          <FontAwesomeIcon className="weather_icons--sun" icon={faCity} />
+          <FontAwesomeIcon
+            className="weather_icons--sun"
+            icon={faCity}
+            style={{ color: "grey" }}
+          />
+          <hr />
           <FontAwesomeIcon
             className="weather_icons--sun"
             icon={faCalendarTimes}
+            style={{ color: "red" }}
           />
+          <hr />
           <FontAwesomeIcon
             className="weather_icons--sun"
             icon={faThermometerHalf}
+            style={{ color: "orangered" }}
           />
-          <FontAwesomeIcon className="weather_icons--sun" icon={faSun} />
-          <FontAwesomeIcon className="weather_icons--sun" icon={faCloudSun} />
-          <FontAwesomeIcon className="weather_icons--sun" icon={faWind} />
+          <hr />
+          <FontAwesomeIcon
+            className="weather_icons--sun"
+            icon={faSun}
+            style={{ color: "yellow" }}
+          />
+          <hr />
+          <FontAwesomeIcon
+            className="weather_icons--sun"
+            icon={faCloudSun}
+            style={{ color: "royalblue" }}
+          />
+          <hr />
+          <FontAwesomeIcon
+            className="weather_icons--sun"
+            icon={faWind}
+            style={{ color: "lightblue" }}
+          />
+          <hr />
           <FontAwesomeIcon
             className="weather_icons--sun"
             icon={faTachometerAlt}
+            style={{ color: "corn" }}
           />
+          <hr />
         </div>
       </div>
     );
@@ -65,7 +99,18 @@ export default function Result(props) {
 
   return (
     <div className="result">
-      {err ? `Nie znalezniono w bazie ${city}` : content}
+      {err ? (
+        <div>
+          <h1>Nie znalezionio {city}</h1>
+          <FontAwesomeIcon
+            className="weather_icons--sun"
+            icon={faFrownOpen}
+            style={{ color: "red", fontSize: 50 }}
+          />
+        </div>
+      ) : (
+        content
+      )}
     </div>
   );
 }
